@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tỏ tình nè 💌</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffd1dc, #ffe6f0); /* hồng nhẹ + pastel */
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 50px;
+      color: #e91e63;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .question {
+      margin-top: 50px;
+      font-size: 30px;
+      color: #4a148c;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 24px;
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .yes {
+      background-color: #f06292;
+      color: white;
+    }
+
+    .no {
+      background-color: #e57373;
+      color: white;
+    }
+
+    #heart {
+      display: none;
+      margin-top: 50px;
+      font-size: 100px;
+      color: #d50000;
+      animation: pop 0.8s ease forwards;
+    }
+
+    #message {
+      font-size: 24px;
+      color: #c2185b;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>I LOVE YOU 💌</h1>
+  <div class="question">Do you love me?</div>
+
+  <div class="buttons">
+    <button class="yes" onclick="showHeart()">Có ❤️</button>
+    <button class="no" onclick="inflateYes()">Không 💔</button>
+  </div>
+
+  <div id="heart">❤️</div>
+  <div id="message"></div>
+
+  <script>
+    let yesBtn = document.querySelector('.yes');
+    let noBtn = document.querySelector('.no');
+    let heart = document.getElementById('heart');
+    let message = document.getElementById('message');
+
+    function showHeart() {
+      heart.style.display = 'block';
+      message.textContent = 'Tui biết bạn cũng yêu tui mà 💖';
+    }
+
+    function inflateYes() {
+      let fontSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+      fontSize += 5;
+      yesBtn.style.fontSize = fontSize + 'px';
+
+      if (fontSize < 300) {
+        setTimeout(inflateYes, 150);
+      } else {
+        message.textContent = 'Thôi đừng bấm không nữa mà 🥺';
+      }
+    }
+  </script>
+
+</body>
+</html>
